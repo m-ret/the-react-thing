@@ -1,1 +1,33 @@
 # the-react-thing
+
+### Especificaciones de Componentes.
+
+Los principales son:
+
+**render()**: La función render debe retornar un solo objeto en representacion de la interfaz. Tambien se puede retornar `null` o `undefined` para no mostrar ninguna interfaz.
+
+**constructor()**: Se ejecuta una sola vez al inicio de montarse el componente en la pantalla y debe retornar el estado inicial del componente mendiante un objeto javascript.
+
+**propTypes**: es un objeto que indica los tipos de las propiedades que recibe el componente en su instanciacion.
+
+### Funciones del Ciclo de Vida
+
+Estas funciones son ejecutadas en varios momentos del ciclo de vida del componente.
+
+**componentDidMount()**: Se ejecuta una sola vez cuando el componente se monta en la página.
+
+**componentDidUpdate()**: Se ejecuta cada vez que el componente se refresca y se ejecuta la función render
+
+**Otras**: componentWillMount, componentWillReceiveProps, shouldComponentUpdate, componentWillUpdate, componentWillUnmount.
+
+### Funciones de Operación
+
+Estas funciones permiten cambiar el estado del componente o forzar que se refresque.
+
+**setState()**: Permite cambiar el estado actual del componente, forzando con el mismo que se intente realizar un repintado del mismo de acuerdo al estado que se cambie. Adicionalmente se le puede especificar una función de callback para una vez termine el cambio de estado poder realizar operaciones.
+
+**forceUpdate (No debe ser usada)**: Fuerza el repintado del componente manteniendo el estado anterior.
+
+**Otras**: replaceState, getDOMNode, isMounted, setProps, replaceProps
+
+Las funciones y metodos que he descrito son las que más he usado, normalmente son las esenciales para cualquier componente.
