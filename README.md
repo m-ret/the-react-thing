@@ -18,7 +18,7 @@ Estas funciones son ejecutadas en varios momentos del ciclo de vida del componen
 
 **componentDidUpdate()**: Se ejecuta cada vez que el componente se refresca y se ejecuta la función render
 
-**Otras**: componentWillMount, componentWillReceiveProps, shouldComponentUpdate, componentWillUpdate, componentWillUnmount.
+**Otras**: `componentWillMount`, `componentWillReceiveProps`, `shouldComponentUpdate`, `componentWillUpdate`, `componentWillUnmount`.
 
 ### Funciones de Operación
 
