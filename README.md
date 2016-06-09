@@ -44,8 +44,7 @@ class Button extends React.Component {
 
   constructor() {
     super();
-    // se setea el estado inicial del componente
-    this.state = {amount: 0};
+    this.state = {amount: 0}; // Se setea el estado inicial del componente
   }
 
   render () {
