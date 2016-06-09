@@ -69,9 +69,7 @@ class Button extends React.Component {
         <div className="jumbotron container">
 
           {this.state.amount < 6
-            <button type="button"
-                    className="btn btn-default"
-                    onClick={this.addition}>
+            <button type="button" className="btn btn-default" onClick={this.addition}>
               Pressed {this.state.amount} times
             </button>
           }
