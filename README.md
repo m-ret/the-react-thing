@@ -6,7 +6,7 @@
 
 **Entidades fuertes usando Reactjs:**
 
-Facebook (donde se creó), Netflix, PayPal, AirBnB, Coursera, Asana, Atlassian, Dropbox, Expedia, Flipboard, HipChat, Instagram, Khan Academy, Periscope, Reddit, Salesforce, Twitter - Fabric, Uber, Venmo, Whatsapp, Yahoo, Zendesk y algunitos mas.
+Facebook (donde se creó), Netflix, PayPal, AirBnB, Coursera, Asana, Atlassian, Dropbox, Expedia, Flipboard, HipChat, Instagram, Khan Academy, Periscope, Reddit, Salesforce, Twitter - Fabric, Uber, Venmo, Whatsapp, Yahoo, Zendesk y algunos mas.
 
 **SINTAXIS JSX:**
 
