@@ -28,7 +28,7 @@ Estas funciones permiten cambiar el estado del componente o forzar que se refres
 
 **forceUpdate (No debe ser usada)**: Fuerza el repintado del componente manteniendo el estado anterior.
 
-**Otras**: replaceState, getDOMNode, isMounted, setProps, replaceProps
+**Otras**: `replaceState`, `getDOMNode`, `isMounted`, `setProps`, `replaceProps`
 
 Las funciones y metodos que he descrito son las que más he usado, normalmente son las esenciales para cualquier componente.
 
