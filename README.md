@@ -1,13 +1,30 @@
-# the-react-thing
+# Empezando con REACT:
 
 ## React:
 
-### *NO es un MVC Framework. React es una librería para construir componentes de interfaces reusables y componentizadas que se actualizan a medida que sus datos subyacentes cambian en el tiempo.*
+### *NO es un MVC Framework. React es una librería de Javascript creada por los desarrolladores de Facebook para construir interfaces de usuario de forma modular.*
 
 **Entidades fuertes usando Reactjs:**
 
 Facebook (donde se creó), Netflix, PayPal, AirBnB, Coursera, Asana, Atlassian, Dropbox, Expedia, Flipboard, HipChat, Instagram, Khan Academy, Periscope, Reddit, Salesforce, Twitter - Fabric, Uber, Venmo, Whatsapp, Yahoo, Zendesk y algunitos mas.
 
+**SINTAXIS JSX:**
+
+Es una extensión de la sintaxis XML.
+Está destinado a ser utilizado por varios preprocesadores(transpiler) para transformarlo en un estándar ECMAScript.
+
+No necesariamente tiene que usar JSX con React,si usted desea puede usar solo JavaScript, claro está que se recomienda utilizar JSX por que es más legible a la hora de desarrollar.
+
+Para transpilar JSX puedes usar babel.
+
+*Sin JSX:*
+```javascript
+React.render(React.createElement('h1', null, 'Hello, world!'), document.getElementById('example'));
+```
+*Con JSX:*
+```javascript
+React.render(<h1>Hello, world!</h1>, document.getElementById('example'));
+```
 ### Especificaciones de Componentes.
 
 Los principales son:
@@ -18,15 +35,192 @@ Los principales son:
 
 **propTypes**: es un objeto que indica los tipos de las propiedades que recibe el componente en su instanciacion.
 
-### Funciones del Ciclo de Vida
+### CICLO DE VIDA DE LOS COMPONENTES
 
-Estas funciones son ejecutadas en varios momentos del ciclo de vida del componente.
+Se definen 3 etapas de un componente.
 
-**componentDidMount()**: Se ejecuta una sola vez cuando el componente se monta en la página.
+**MOUNTING:**
+Cuando el componente se está montando en el Dom.
 
-**componentDidUpdate()**: Se ejecuta cada vez que el componente se refresca y se ejecuta la función render
+**UPDATING:**
+Cuando se están modificando los `props` y `states`.
 
-**Otras**: `componentWillMount`, `componentWillReceiveProps`, `shouldComponentUpdate`, `componentWillUpdate`, `componentWillUnmount`.
+**UNMOUNTING:**
+Cuando el componente se está quitando del Dom.
+
+Existen varios métodos que provee React que ayudarán a la hora de crear nuestros componentes para distintos escenarios.
+
+**MOUNTING: COMPONENTWILLMOUNT**
+Se invoca una vez tanto en el cliente y el servidor.
+Se ejecuta antes de que el componente sea montado en el DOM.
+
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class MyComponent extends React.Component {
+  constructor(props){
+    super(props);
+  }
+  componentWillMount(){
+    console.log('Before mount...');  
+  }
+  render(){
+    return <div>My Component</div>
+  }
+}
+
+ReactDOM.render(<MyComponent />, document.getElementById('container'));
+```
+
+**MOUNTING: COMPONENTDIDMOUNT**
+Se ejecuta inmediatamente después que sea montado en el DOM.
+Si deseas hacer peticiones AJAX o integrar con librerías de terceros como jquery u otros, este método es el ideal.
+
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class MyComponent extends React.Component {
+  constructor(props){
+    super(props);
+    console.log('Before mount');
+  }
+
+  componentDidMount(){
+    console.log('Mount');
+  }
+  
+  render(){
+    return <div>MyComponent</div>
+  }
+}
+
+ReactDOM.render(
+  <MyComponent />, 
+  document.getElementById('container')
+);
+```
+
+**UPDATING: COMPONENTWILLRECEIVEPROPS**
+Este método es invocado cuando un componente está recibiendo nuevas props.
+Este método no es invocado en el primer render.
+
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class MyComponent extends React.Component {
+  componentWillReceiveProps(nextProps) {
+    console.log('nextProps ',nextProps.name);
+    console.log('props ',this.props.name);
+  }
+  render() {
+    return <div>Bar {this.props.name}!</div>;
+  }
+}
+
+ReactDOM.render(<MyComponent name="jupiter" />, document.getElementById('container'));
+
+ReactDOM.render(<MyComponent name="saturno" />, document.getElementById('container'));
+
+ReactDOM.render(<MyComponent name="ganimedes" />, document.getElementById('container'));
+```
+
+**UPDATING: COMPONENTWILLUPDATE**
+Se invocará antes del render, justo antes que tu componente se haya actualizado (recibiendo nuevas props o state).
+Excelente para procesos que necesiten hacer antes de hacer la actualización.
+
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class MyComponent extends React.Component{
+  componentWillUpdate(){
+    console.log('Update MyComponent');
+  }
+  render(){
+    return <div>my Component {this.props.name}</div>
+  }
+}
+
+ReactDOM.render(<MyComponent name="jupiter"/>,document.getElementById('container'));
+ReactDOM.render(<MyComponent name="neptuno"/>,document.getElementById('container'));
+```
+
+**UPDATING: COMPONENTDIDUPDATE:**
+Se invoca inmediatamente después del render, justo cuando tu componente a cambiado.
+
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class MyComponent extends React.Component{
+  componentDidUpdate(prevProps,prevState){
+    console.log('prevPros or prevState');
+  }
+  render(){
+    return <div>my Component {this.props.name}</div>
+  }
+}
+
+ReactDOM.render(<MyComponent name="jupiter"/>,document.getElementById('container'));
+ReactDOM.render(<MyComponent name="neptuno"/>,document.getElementById('container'));
+```
+
+**UNMOUNTING: COMPONENTWILLUNMOUNT**
+Se invoca inmediatamente antes de que un componente sea desmontado del DOM.
+Aquí puedes realizar la limpieza de cualquier referencia de memoria que nos hayan quedado.
+
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class MyComponent extends React.Component {
+  constructor(props){
+    super(props);
+  }
+
+  componentWillMount(){
+    console.log('Mount');
+  }
+  componentWillUnmount(){
+    console.log('Unmount');
+  }
+  render(){
+    console.log('Rendering');
+    return <div>I am component</div>
+  }
+}
+
+class MyApp extends React.Component{
+  constructor(pros){
+    super(pros);
+  }
+
+  mount(){
+    ReactDOM.render(<MyComponent />,document.getElementById('component'));
+  }
+
+  unmount(){
+    ReactDOM.unmountComponentAtNode(document.getElementById('component'));
+  }
+
+  render(){
+    return( 
+      <div>
+        <button onClick={this.mount.bind(this)}>Mount component</button>
+        <button onClick={this.unmount.bind(this)}>Unmount component</button>
+        <div id="component"></div>
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<MyApp />, document.getElementById('container'));
+```
+
+* ***El método constructor se ejecuta antes componentWillMount.***
 
 ### Funciones de Operación
 
