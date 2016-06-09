@@ -31,3 +31,63 @@ Estas funciones permiten cambiar el estado del componente o forzar que se refres
 **Otras**: replaceState, getDOMNode, isMounted, setProps, replaceProps
 
 Las funciones y metodos que he descrito son las que más he usado, normalmente son las esenciales para cualquier componente.
+
+## Ejemplos de Código
+
+```javascript
+/* jshint esnext: true */
+
+class Button extends React.Component {
+
+  constructor() {
+    super();
+    this.state = {amount: 0};
+  }
+
+  render () {
+
+    let showEl;
+    let showEl2;
+    let showEl3;
+
+    showEl = (this.state.amount > 5) ? <p>Amount 1: {this.state.amount}</p> : null;
+
+    showEl2 = <p>Amount 2: {this.state.amount + 5}</p>
+
+    if (this.state.amount > 5) {
+      showEl3 = <button type="button" className="btn btn-default" onClick={this.addition}>
+        New Button
+      </button>
+    }
+
+    return (
+        <div className="jumbotron container">
+
+          {this.state.amount < 6 && // SHOULD DELETE THIS IN ORDER TO SHOW THE WAYS TO TOGGLE ELEMENTS
+            <button type="button"
+                    className="btn btn-default"
+                    onClick={this.addition}>
+
+              Pressed {this.state.amount} times
+
+            </button>
+          }
+
+          {showEl}
+
+          {(this.state.amount > 5) && showEl2}
+
+          {showEl3}
+
+       </div>
+    );
+  }
+
+  addition = (evt) => {
+    this.setState({amount: this.state.amount + 1});
+    evt.preventDefault();
+  }
+};
+
+React.render(<Button/>, document.getElementById('container'));
+```
