@@ -34,6 +34,9 @@ Las funciones y metodos que he descrito son las que más he usado, normalmente s
 
 ## Ejemplos de Código
 
+Este ejemplo es usado para mostrar un simple componente que es un botón.
+Acá se verán las maneras para esconder y mostrar un elemento. Y como cambiar el `state` de nuestro componente.
+
 ```javascript
 /* jshint esnext: true */
 
@@ -41,6 +44,7 @@ class Button extends React.Component {
 
   constructor() {
     super();
+    // se setea el estado inicial del componente
     this.state = {amount: 0};
   }
 
@@ -50,6 +54,8 @@ class Button extends React.Component {
     let showEl2;
     let showEl3;
 
+   // Los elementos se mostrarán si el state.amount es mayor a 5
+   
     showEl = (this.state.amount > 5) ? <p>Amount 1: {this.state.amount}</p> : null;
 
     showEl2 = <p>Amount 2: {this.state.amount + 5}</p>
@@ -63,16 +69,17 @@ class Button extends React.Component {
     return (
         <div className="jumbotron container">
 
-          {this.state.amount < 6 && // SHOULD DELETE THIS IN ORDER TO SHOW THE WAYS TO TOGGLE ELEMENTS
+          {this.state.amount < 6
             <button type="button"
                     className="btn btn-default"
                     onClick={this.addition}>
-
               Pressed {this.state.amount} times
-
             </button>
           }
-
+          
+          // Acá se llaman los elementos que estaban escondidos
+          // Aparecerán hasta que el state.amount cumpla con el condicional
+          
           {showEl}
 
           {(this.state.amount > 5) && showEl2}
