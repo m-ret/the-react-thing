@@ -75,16 +75,12 @@ class Button extends React.Component {
               Pressed {this.state.amount} times
             </button>
           }
-          
           // Acá se llaman los elementos que estaban escondidos
           // Aparecerán hasta que el state.amount cumpla con el condicional
-          
           {showEl}
-
           {(this.state.amount > 5) && showEl2}
-
           {showEl3}
-
+          
        </div>
     );
   }
