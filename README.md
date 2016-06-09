@@ -4,6 +4,10 @@
 
 ### *NO es un MVC Framework. React es una librería para construir componentes de interfaces reusables y componentizadas que se actualizan a medida que sus datos subyacentes cambian en el tiempo.*
 
+**Entidades fuertes usando Reactjs:**
+
+Facebook (donde se creó), Netflix, PayPal, AirBnB, Coursera, Asana, Atlassian, Dropbox, Expedia, Flipboard, HipChat, Instagram, Khan Academy, Periscope, Reddit, Salesforce, Twitter - Fabric, Uber, Venmo, Whatsapp, Yahoo, Zendesk y algunitos mas.
+
 ### Especificaciones de Componentes.
 
 Los principales son:
@@ -119,4 +123,90 @@ class Button extends React.Component {
 };
 
 React.render(<Button/>, document.getElementById('container'));
+```
+
+# App `todo` List completa para ver como se mueven los `props` de un componente a otro
+
+```javascript
+/* jshint esnext: true */
+
+class TodoList extends React.Component {
+
+  static propTypes = {
+    todos: React.PropTypes.array
+  }
+
+  constructor(props) {
+    super(props)
+    this.state = { todos: this.props.todos || [] }
+  }
+  
+  addTodo = (item) => {
+    this.setState({todos: this.state.todos.concat([item])});
+  }
+
+  render () {
+    return (
+      <div>
+        <h3>TODO List</h3>
+        <TodoItems items={this.state.todos}/>
+        <TodoInput addTodo={this.addTodo}/>
+      </div>
+    );    
+  }
+};
+
+class TodoItems extends React.Component {
+
+  static propTypes = {
+    items: React.PropTypes.array.isRequired
+  }
+  
+  constructor(props) {
+    super(props);
+  }
+  
+  render () {
+	let createItem;
+      
+    createItem = (item, index) => {
+      return (
+        <li key={index}>{item}</li>
+      );
+    };
+	return <ul>{this.props.items.map(createItem)}</ul>;
+  }
+};
+
+class TodoInput extends React.Component {
+  
+  constructor (props) {
+     super(props);
+     this.state = {item: ''};
+  }
+  
+  onChange = (e) => {
+    this.setState({item: e.target.value});
+  }
+  
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.addTodo(this.state.item);
+    this.setState({item: ''}, function() {
+      React.findDOMNode(this.refs.item).focus();
+    });
+  }
+  
+  render () {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <input type="text" onChange={this.onChange} value={this.state.item}/>
+        <input type="submit" value="Add"/>
+      </form>
+    );
+  }
+};
+
+   
+React.render(<TodoList todos={['red','blue']}/>, document.getElementById('container'));
 ```
