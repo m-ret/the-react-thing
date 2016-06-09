@@ -53,7 +53,7 @@ class Button extends React.Component {
     let showEl2;
     let showEl3;
 
-   // Los elementos se mostrarán si el state.amount es mayor a 5
+    // Los elementos se mostrarán si el state.amount es mayor a 5
     showEl = (this.state.amount > 5) ? <p>Amount 1: {this.state.amount}</p> : null;
     // showEl2 no tiene ningún condicional
     // Su condicional para que aparezca está dentro del return
