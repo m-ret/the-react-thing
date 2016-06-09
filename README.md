@@ -1,5 +1,9 @@
 # the-react-thing
 
+## React:
+
+### *NO es un MVC Framework. React es una librería para construir componentes de interfaces reusables y componentizadas que se actualizan a medida que sus datos subyacentes cambian en el tiempo.*
+
 ### Especificaciones de Componentes.
 
 Los principales son:
