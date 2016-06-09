@@ -32,6 +32,31 @@ Estas funciones permiten cambiar el estado del componente o forzar que se refres
 
 Las funciones y metodos que he descrito son las que más he usado, normalmente son las esenciales para cualquier componente.
 
+Un componente luce más o menos así:
+
+```javascript
+class Button extends React.Component {
+  constructor () {
+    super();
+    this.state = { amount: 0 };
+  }
+
+  render () {
+    return (
+      <button type="button" onClick={this.adding}>
+        Pressed {this.state.amount} times
+      </button>);
+  }
+  
+  adding = (evt) => {
+    this.setState({amount: this.state.amount + 1});
+    evt.preventDefault();
+  }
+};
+
+React.render(<Button/>, document.getElementById('container'));
+```
+
 ## Ejemplos de Código
 
 Este ejemplo es usado para mostrar un simple componente que es un botón.
