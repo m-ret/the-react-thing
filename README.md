@@ -386,9 +386,7 @@ class TodoInput extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.addTodo(this.state.item);
-    this.setState({item: ''}, function() {
-      React.findDOMNode(this.refs.item).focus();
-    });
+    this.setState({item: ''});
   }
   
   render () {
