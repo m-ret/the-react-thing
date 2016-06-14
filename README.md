@@ -319,7 +319,7 @@ class Button extends React.Component {
 React.render(<Button/>, document.getElementById('container'));
 ```
 
-# App `todo` List completa para ver como se mueven los `props` de un componente a otro
+## App `Todo List` completa para ver como se mueven los `props` y `state`s de un componente a otro
 
 ```javascript
 /* jshint esnext: true */
@@ -402,3 +402,21 @@ class TodoInput extends React.Component {
    
 React.render(<TodoList todos={['red','blue']}/>, document.getElementById('container'));
 ```
+
+La lista de `todos` es pasada hacia abajo desde el `state` de un componente como propiedad a un componente subyacente (TodoItems). El componente `TodoList` es el responsable de mantener la lista de `Todos`, esa es la razón por la cual se mantiene en el estado de este componente. Cada cambio en el estado del componente va a provocar que el método `render` se llame.
+
+El componente `TodoItem` suple los nuevos items al componente `TodoList`, esto es gracias al callback `addTodo` que se llama desde `TodoInput` cada vez que el usuario agrega nueva información. 
+
+Cómo explicamo que que está haciendo la función `onChange` en el componente `TodoItems`:
+
+`onChange` está llamando `this.setState()`, función de React que setea el nuevo valor de `this.state` lo cual significa que el método `render` va a ser llamado nuevamente. 
+
+Hay que hacerse de cuenta que los props trabajan a modo de parametros/variables que son pasadas de un componente a otro. 
+
+También se puede Javascript adentro de los componentes cuando son llamados.
+
+Por ejemplo:
+
+`<TodoItems items={this.state.todos.filter((x) => x.whatever === true)}/>`
+
+
