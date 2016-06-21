@@ -407,7 +407,7 @@ La lista de `todos` es pasada hacia abajo desde el `state` de un componente como
 
 El componente `TodoItem` suple los nuevos items al componente `TodoList`, esto es gracias al callback `addTodo` que se llama desde `TodoInput` cada vez que el usuario agrega nueva información. 
 
-Cómo explicamo que que está haciendo la función `onChange` en el componente `TodoItems`:
+Cómo explicamos que está haciendo la función `onChange` en el componente `TodoItems`:
 
 `onChange` está llamando `this.setState()`, función de React que setea el nuevo valor de `this.state` lo cual significa que el método `render` va a ser llamado nuevamente. 
 
