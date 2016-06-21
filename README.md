@@ -419,4 +419,9 @@ Por ejemplo:
 
 `<TodoItems items={this.state.todos.filter((x) => x.whatever === true)}/>`
 
+## Recursos:
+
+https://www.fullstackreact.com/articles/react-tutorial-cloning-yelp/
+
+Una GRAN lista de recursos: https://github.com/enaqx/awesome-react
 
